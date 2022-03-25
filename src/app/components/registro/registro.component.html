@@ -1,0 +1,109 @@
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="inicio"><b>Despensa San Agustín S.A.S.</b></a>
+        </div>
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">Registro de nuevo usuario</p>
+                <form   (ngSubmit)="OnSubmit(registroF)"
+                        #registroF="ngForm"
+                        >
+                    <span *ngIf="registroF.submitted && registroF.controls['nombre'].errors"
+                            class="text-danger animated fadeIn"
+                            >El nombre es obligatorio.</span>
+                    <div class="input-group mb-3">
+                        <input  type="text" 
+                                class="form-control" 
+                                placeholder="Nombre completo"
+                                name="nombre"
+                                [(ngModel)]="usuario.nombre"
+                                required
+                                minlength="4"
+                                >
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span *ngIf="registroF.submitted && registroF.controls['email'].errors"
+                            class="text-danger animated fadeIn"
+                            >El correo electrónico es obligatorio.</span>
+                    <div class="input-group mb-3">
+                        <input  type="email" 
+                                class="form-control" 
+                                placeholder="Correo electrónico"
+                                name="email"
+                                [(ngModel)]="usuario.email"
+                                required
+                                email
+                                minlength="8"
+                                >
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span *ngIf="registroF.submitted && registroF.controls['password'].errors"
+                            class="text-danger animated fadeIn"
+                            >El password es obligatorio y 8 caracteres.
+                    </span>
+                    <div class="input-group mb-3">
+                        <input  type="password" 
+                                class="form-control" 
+                                placeholder="Password"
+                                name="password"
+                                [(ngModel)]="usuario.password"
+                                required
+                                password
+                                minlength="8"
+                                >
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="input-group mb-3">
+                        <input  type="password" 
+                                class="form-control" 
+                                placeholder="Confirme password"
+                                name="password"
+                                [(ngModel)]="usuario.password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-8">
+                            <span *ngIf="!checado.checked && registroF.submitted"
+                            class="text-danger animated fadeIn"
+                            >Debe aceptar los terminos para continuar.</span>
+                            <div class="icheck-primary">
+                                <input type="checkbox"
+                                        #checado 
+                                        id="agreeTerms" 
+                                        name="terms" 
+                                        value="agree"
+                                        ngModel
+                                        required>
+                                <label for="agreeTerms">
+                                    Estoy de acuerdo con los <a href="#">terminos</a>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                        </div>
+                    </div>
+                </form>
+
+                <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="text-center">Estoy registrado</a>
+            </div>
+        </div>
+    </div>
+</body>

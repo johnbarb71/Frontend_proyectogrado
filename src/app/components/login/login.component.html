@@ -1,0 +1,71 @@
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="inicio"><b>Despensa San Agustín S.A.S.</b></a>
+        </div>
+
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Inicie sesión para continuar</p>
+                <form (ngSubmit)="Login(registroF)"
+                        #registroF="ngForm">
+                    <span *ngIf="registroF.submitted && registroF.controls['email'].errors"
+                            class="text-danger animated fadeIn"
+                            >El correo es obligatorio.
+                    </span>
+                    <div class="input-group mb-3">
+                        <input type="email" 
+                                name="email"
+                                class="form-control" 
+                                placeholder="Correo electrónico"
+                                required
+                                email
+                                [(ngModel)]="usuario.email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span *ngIf="registroF.submitted && registroF.controls['password'].errors"
+                            class="text-danger animated fadeIn"
+                            >El password es obligatorio y 8 caracteres.
+                    </span>
+                    <div class="input-group mb-3">
+                        <input type="password"
+                                name="password" 
+                                class="form-control" 
+                                placeholder="Password"
+                                required
+                                password
+                                minlength="6"
+                                [(ngModel)]="usuario.password"
+                                >
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" [(ngModel)]="sesionVigente" id="sesionVigente" name="sesionVigente">
+                                <label class="ml-2" for="remember">
+                                    Recordar
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Iniciar</button>
+                        </div>
+                    </div>
+                </form>
+                <p class="mb-0">
+                    <a [routerLink]="['/registro']" routerLinkActive="router-link-active"  class="text-center">Registrate</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
