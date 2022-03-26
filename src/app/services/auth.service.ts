@@ -19,8 +19,11 @@ export class AuthService {
    }
 
     logout(){
+      this.http.post(`${ this.url }/logout`,localStorage.getItem('token'));
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      localStorage.removeItem('expira');
+      return;
     }
 
     login(usuario:UsuarioModel){

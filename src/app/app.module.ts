@@ -9,6 +9,10 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { HomeComponent } from './components/home/home.component';
+import { NavComponent } from './components/share/nav/nav.component';
+import { SidebarComponent } from './components/share/sidebar/sidebar.component';
+import { ContactoComponent } from './components/share/contacto/contacto.component';
+import { AyudaComponent } from './components/share/ayuda/ayuda.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { HomeComponent } from './components/home/home.component';
     LoginComponent,
     InicioComponent,
     RegistroComponent,
-    HomeComponent
+    HomeComponent,
+    NavComponent,
+    SidebarComponent,
+    ContactoComponent,
+    AyudaComponent
   ],
   imports: [
     BrowserModule,
