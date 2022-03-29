@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { UsuarioModel } from '../models/usuario.model';
+//Observable
+import { Subject } from 'rxjs';
+import { Observable } from 'rxjs';
+//finde Observable
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -13,6 +17,9 @@ export class AuthService {
 
   userToken: any = null;
   userData: any = null;
+  usuario1: UsuarioModel;
+  guest: UsuarioModel;
+  private clientes$ = new Subject<UsuarioModel>();
 
   constructor( private http : HttpClient ) {
     this.leerTokenLocSt();
@@ -35,13 +42,14 @@ export class AuthService {
       loginData).pipe(
         map((resp:any) => {
           this.guardarToken(resp['token'],resp['user']);
+          this.leerUsuario();
         })
         )
     }
 
     registrarUsuario(usuario:UsuarioModel){
       const authData = {
-        name : usuario.nombre,
+        name : usuario.name,
         email : usuario.email,
         password : usuario.password
       };
@@ -63,7 +71,7 @@ export class AuthService {
 
     leerTokenLocSt(){
       if(localStorage.getItem('token')){
-        console.log('%cauth.service.ts line:49 object', 'color: #007acc;', localStorage.getItem('token')); 
+        /* console.log('%cauth.service.ts line:49 object', 'color: #007acc;', localStorage.getItem('token'));  */
         this.userToken = localStorage.getItem('token');
       }else{
         this.userToken = '';
@@ -96,5 +104,18 @@ export class AuthService {
       }
     }
 
+    //Inicio de Observable USUARIO  
+    /* public leerUsuario(){
+      this.usuario1 = JSON.parse((localStorage.getItem('user')));
+      //console.log('Leertoken desde navbar',this.usuario1);
+      this.clientes$.next(this.usuario1);
+    }
+    getCliente$(): Observable<UsuarioModel>{
+      return this.clientes$.asObservable();
+    } */
+    public leerUsuario(){
+      return this.usuario1 = JSON.parse((localStorage.getItem('user')));
+    }
+    //Fin de Observable USUARIO
   
 }

@@ -16,7 +16,7 @@ export class NavComponent implements OnInit {
 
   salir(){
     this.auth.logout();
-    this.router.navigateByUrl('*');
+    this.router.navigateByUrl('/inicio');
   }
 
 }

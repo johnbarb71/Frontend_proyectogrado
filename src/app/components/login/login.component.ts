@@ -38,13 +38,21 @@ export class LoginComponent implements OnInit {
       if(this.sesionVigente){
         localStorage.setItem('email',this.usuario.email);
       }
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/home'); 
     },(err)=>{
       if(err.error.message === 'Login failed'){
         Swal.fire({
           allowOutsideClick: false,
           title: 'Error al autenticar',
           text: 'Usuario o contraseña invalida',
+        })
+        return;
+      }
+      if(err.error.message === 'Usuario no activo'){
+        Swal.fire({
+          allowOutsideClick: false,
+          title: 'Usuario no activo',
+          text: 'Usuario no está activo, por favor informe al administrador.',
         })
         return;
       }

@@ -1,7 +1,7 @@
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="inicio"><b>Despensa San Agustín S.A.S.</b></a>
+            <a [routerLink]="['/inicio']" ><b>Despensa San Agustín S.A.S.</b></a>
         </div>
         <div class="card">
             <div class="card-body register-card-body">
@@ -9,15 +9,15 @@
                 <form   (ngSubmit)="OnSubmit(registroF)"
                         #registroF="ngForm"
                         >
-                    <span *ngIf="registroF.submitted && registroF.controls['nombre'].errors"
+                    <span *ngIf="registroF.submitted && registroF.controls['name'].errors"
                             class="text-danger animated fadeIn"
                             >El nombre es obligatorio.</span>
                     <div class="input-group mb-3">
                         <input  type="text" 
                                 class="form-control" 
                                 placeholder="Nombre completo"
-                                name="nombre"
-                                [(ngModel)]="usuario.nombre"
+                                name="name"
+                                [(ngModel)]="usuario.name"
                                 required
                                 minlength="4"
                                 >

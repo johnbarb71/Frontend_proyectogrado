@@ -13,6 +13,10 @@ import { NavComponent } from './components/share/nav/nav.component';
 import { SidebarComponent } from './components/share/sidebar/sidebar.component';
 import { ContactoComponent } from './components/share/contacto/contacto.component';
 import { AyudaComponent } from './components/share/ayuda/ayuda.component';
+import { ActivarusuarioComponent } from './components/usuarios/activarusuario/activarusuario.component';
+import { EditarusuarioComponent } from './components/usuarios/editarusuario/editarusuario.component';
+import { AgregarusuarioComponent } from './components/usuarios/agregarusuario/agregarusuario.component';
+import { UsuarioComponent } from './components/usuarios/usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { AyudaComponent } from './components/share/ayuda/ayuda.component';
     NavComponent,
     SidebarComponent,
     ContactoComponent,
-    AyudaComponent
+    AyudaComponent,
+    ActivarusuarioComponent,
+    EditarusuarioComponent,
+    AgregarusuarioComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,

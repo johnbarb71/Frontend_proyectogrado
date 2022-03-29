@@ -10,7 +10,6 @@ export class AuthGuard implements CanActivate {
   constructor(private auth:AuthService, private router:Router){}
 
   canActivate():boolean{
-    console.log('%cauth.guard.ts line:13 Guardia', 'color: #007acc;');
     if(this.auth.sesionActiva()){
       return true;
     }else{
