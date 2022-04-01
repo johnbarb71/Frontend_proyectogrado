@@ -13,6 +13,8 @@ import { ActivarusuarioComponent } from "./components/usuarios/activarusuario/ac
 import { AgregarusuarioComponent } from "./components/usuarios/agregarusuario/agregarusuario.component";
 import { EditarusuarioComponent } from "./components/usuarios/editarusuario/editarusuario.component";
 import { UsuarioComponent } from "./components/usuarios/usuario/usuario.component";
+import { ActivarusuariosComponent } from "./components/usuarios/activarusuarios/activarusuarios.component";
+import { EditarusuariosComponent } from "./components/usuarios/editarusuarios/editarusuarios.component";
 
 const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
@@ -25,8 +27,10 @@ const routes: Routes = [
       { path: 'contacto', component: ContactoComponent, canActivate:[ AuthGuard] },
       { path: 'ayuda', component: AyudaComponent, canActivate:[ AuthGuard] },
       { path: 'usuario', component: UsuarioComponent, canActivate:[ AuthGuard] },
-      { path: 'usuario/activar', component: ActivarusuarioComponent, canActivate:[ AuthGuard] },
-      { path: 'usuario/editar', component: EditarusuarioComponent, canActivate:[ AuthGuard] },
+      { path: 'usuario/users/activar/:id', component: ActivarusuarioComponent, canActivate:[ AuthGuard] },
+      { path: 'usuario/users/activar', component: ActivarusuariosComponent, canActivate:[ AuthGuard] },
+      { path: 'usuario/users/editar/:id', component: EditarusuarioComponent, canActivate:[ AuthGuard] },
+      { path: 'usuario/users/editar', component: EditarusuariosComponent, canActivate:[ AuthGuard] },
       { path: 'usuario/agregar', component: AgregarusuarioComponent, canActivate:[ AuthGuard] },
     ] },
   

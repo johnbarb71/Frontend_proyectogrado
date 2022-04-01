@@ -1,0 +1,55 @@
+<h1>Tabla de usuarios</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Selección de usuarios para cambiar la contraseña</h3>
+                    </div>
+     
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Nombre</th>
+                                    <th>Correo electrónico</th>
+                                    <th>Estado</th>
+                                    <th>Rol</th>
+                                    <th>Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  *ngFor="let usuario of usuarios, let i = index">
+                                <td scope="row">{{i+1}}</td>
+                                <td>{{usuario.name}}</td>
+                                <td>{{usuario.email}}</td>
+                                <td *ngIf="usuario.estado===1">Activo</td>
+                                <td *ngIf="usuario.estado===0">No Activo</td>
+                                <td [ngSwitch]="usuario.role">
+                                    <span *ngSwitchCase="2">superadmin</span>
+                                    <span *ngSwitchCase="1">admin</span>
+                                    <span *ngSwitchDefault>usuario normal</span>
+                                </td>
+                                <td [ngSwitch]="usuario.id" class="text-center">
+                                    <button *ngSwitchCase="1" class="btn btn-danger mr-1"
+                                            (click)="prohibido()">
+                                            <i class="fa fa-key"></i>
+                                    </button>
+                                    <button *ngSwitchDefault class="btn btn-success mr-1"
+                                            (click)="buscarId(usuario.id)">
+                                            <i class="fa fa-key"></i>
+                                    </button>
+                                </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    

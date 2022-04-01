@@ -16,7 +16,7 @@ export class SidebarComponent /* implements OnInit */ {
 
   constructor(private auth:AuthService) {  
     this.cliente = auth.leerUsuario();
-    console.log('%csidebar.component.ts line:18 this.cliente', 'color: #007acc;', this.cliente);
+    /* console.log('%csidebar.component.ts line:18 this.cliente', 'color: #007acc;', this.cliente); */
   }
 
   

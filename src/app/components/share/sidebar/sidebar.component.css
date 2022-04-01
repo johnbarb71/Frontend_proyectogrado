@@ -5,9 +5,9 @@
 } */
 
 .nav .nav-link:active  {    
-    background-color: #b1fdb8;
+    background-color: #e0e0e0;
 }
-
-.nav .nav-link:enabled {    
-    background-color: #b1fdb8;
+ 
+.active-link {
+  background-color: #e0e0e0;
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { UsuarioModel } from '../models/usuario.model';
 //Observable
 import { Subject } from 'rxjs';
@@ -59,6 +59,63 @@ export class AuthService {
         authData);
     }
 
+    crearUsuario(usuario:UsuarioModel){
+      const authData = {
+        name : usuario.name,
+        email : usuario.email,
+        password : usuario.password,
+        estado : usuario.estado,
+        role: usuario.role
+      };
+      var reqHeader = new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+     });
+      return this.http.post(
+        `${ this.url }/new-user`,
+        authData,{headers: reqHeader });
+    }
+
+    updUsuario(usuario:UsuarioModel){
+      const authData = {
+        name : usuario.name,
+        email : usuario.email,
+        password : usuario.password,
+        estado : usuario.estado,
+        role: usuario.role
+      };
+      var reqHeader = new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      });
+      return this.http.put(
+        `${ this.url }/user/updestuser/${usuario.id}`,
+        authData,{headers: reqHeader });
+    }
+
+    updPassUsuario(usuario:UsuarioModel){
+      const authData = {
+        password : usuario.password
+      };
+      var reqHeader = new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      });
+      return this.http.put(
+        `${ this.url }/user/updpassuser/${usuario.id}`,
+        authData,{headers: reqHeader });
+    }
+
+    getUsuarios(){
+      const reqHeader = this.headerToken();
+      return this.http.get(`${this.url}/user/getusuarios`,{headers: reqHeader })
+    }
+
+    getUsuario(id:string){
+      const reqHeader = this.headerToken();
+      return this.http.get(`${this.url}/user/getusuario/${id}`,{headers: reqHeader })
+    }
+
     private guardarToken(idToken: string, user:string){
       this.userToken = idToken;
       localStorage.setItem('token',idToken);
@@ -103,16 +160,15 @@ export class AuthService {
         return false;
       }
     }
-
-    //Inicio de Observable USUARIO  
-    /* public leerUsuario(){
-      this.usuario1 = JSON.parse((localStorage.getItem('user')));
-      //console.log('Leertoken desde navbar',this.usuario1);
-      this.clientes$.next(this.usuario1);
+    //Obtener el token y enviarlo por petición http
+    headerToken(){
+      var reqHeader = new HttpHeaders({ 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      });
+      return reqHeader;
     }
-    getCliente$(): Observable<UsuarioModel>{
-      return this.clientes$.asObservable();
-    } */
+    
     public leerUsuario(){
       return this.usuario1 = JSON.parse((localStorage.getItem('user')));
     }

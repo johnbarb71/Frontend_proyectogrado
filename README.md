@@ -1,4 +1,4 @@
-# ForntEnd en Angular Proyecto de Grado
+# FrontEnd en Angular Proyecto de Grado
 
 Proyecto de grado en basado en Angular.
 

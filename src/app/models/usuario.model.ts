@@ -3,7 +3,7 @@ export class UsuarioModel{
     email: string = '';
     password: string = '';
     name: string = '';
-    estado: number = 0;
-    role: number = 0;
+    estado: number;
+    role: number;
 
 }
