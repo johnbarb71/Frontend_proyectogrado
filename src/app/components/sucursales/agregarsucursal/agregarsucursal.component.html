@@ -1,0 +1,74 @@
+<h1>Agregar sucursal</h1>
+<section class="content">
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Agregar sucursal</h3>
+        </div>
+        
+        
+        <form class="form-horizontal" (ngSubmit)="guardar(f)" #f="ngForm">
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Nombre</label>
+                    <div class="col-sm-10">
+                        <span *ngIf="f.submitted && f.controls['nombre'].errors"
+                            class="text-danger animated fadeIn"
+                            >El nombre es obligatorio.</span>
+                        <input type="text" 
+                                class="form-control"
+                                name="nombre"
+                                [(ngModel)]="sucursal.nombre"
+                                placeholder="Nombre completo"
+                                required
+                                minlength="4"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Dirección</label>
+                    <div class="col-sm-10">
+                        <span *ngIf="f.submitted && f.controls['direccion'].errors"
+                            class="text-danger animated fadeIn"
+                            >La dirección es obligatorio.</span>
+                        <input type="text" 
+                                class="form-control"
+                                name="direccion"
+                                [(ngModel)]="sucursal.direccion"
+                                placeholder="Dirección completa"
+                                required
+                                minlength="4"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Teléfono</label>
+                    <div class="col-sm-10">
+                        <span *ngIf="f.submitted && f.controls['telefono'].errors"
+                            class="text-danger animated fadeIn"
+                            >El teléfono es obligatorio.</span>
+                        <input type="text" 
+                                class="form-control"
+                                name="telefono"
+                                [(ngModel)]="sucursal.telefono"
+                                placeholder="Teléfono completo"
+                                required
+                                minlength="4"
+                        >
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success">Agregar</button>
+            </div>
+        </form>
+        <div class="form-group row ml-4">
+            <button (click)='regresarPagina()' class="btn btn-default float-left">Cancelar</button>
+        </div>
+        
+    </div>
+
+        
+</section>
+
+

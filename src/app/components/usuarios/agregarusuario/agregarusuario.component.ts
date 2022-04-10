@@ -3,6 +3,8 @@ import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { AuthService } from "src/app/services/auth.service";
+import { RoleModel } from 'src/app/models/role.model';
+import { RoleService } from 'src/app/services/role.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -14,10 +16,12 @@ import { Router } from '@angular/router';
 export class AgregarusuarioComponent implements OnInit {
 
   usuario = new UsuarioModel();
+  roles:RoleModel [] = [];
 
-  constructor(private auth: AuthService,private location:Location, private router:Router) { }
+  constructor(private auth: AuthService,private location:Location, private router:Router, private rol:RoleService) { }
 
   ngOnInit(): void {
+    this.rol.getRoles().subscribe((resp:any)=>{this.roles=resp;})
   }
 
   guardar(form:NgForm){
@@ -30,7 +34,7 @@ export class AgregarusuarioComponent implements OnInit {
     }else{
       this.usuario.estado = 0;
     }
-    switch(form.value['rol']) {
+    /* switch(form.value['rol']) {
       case 0:
         this.usuario.role = 0;
         break;
@@ -39,8 +43,9 @@ export class AgregarusuarioComponent implements OnInit {
         break;
       default:
         this.usuario.role = 2;
-    }
-    console.log('%cagregarusuario.component.ts line:41 this.usuario', 'color: #007acc;', this.usuario); 
+    } */
+    this.usuario.role = Number(this.usuario.role);
+    console.log('%cagregarusuario.component.ts line:43 this.usuario', 'color: #007acc;', this.usuario); 
     this.auth.crearUsuario(this.usuario).subscribe( resp => 
       {
         console.log('%cregistro.component.ts line:25 resp', 'color: #007acc;', resp['message']);

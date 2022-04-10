@@ -1,0 +1,40 @@
+<h1>Editar Roles</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Listado de Roles</h3>
+                    </div>
+     
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Nombre</th>
+                                    <th>Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  *ngFor="let rol of roles, let i = index">
+                                <td scope="row">{{i+1}}</td>
+                                <td>{{rol.nombre}}</td>
+                                <td class="text-center">
+                                    <button (click)="buscarId(rol.id)" class="btn btn-success mr-1">
+                                        <i class="fa fa-pen"></i>
+                                    </button>
+                                </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    
+

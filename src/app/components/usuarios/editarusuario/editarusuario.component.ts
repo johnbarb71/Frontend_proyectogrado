@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioModel } from 'src/app/models/usuario.model';
+import { RoleModel } from 'src/app/models/role.model';
+import { RoleService } from 'src/app/services/role.service';
 import { AuthService } from "src/app/services/auth.service";
 import Swal from 'sweetalert2';
 
@@ -16,8 +18,9 @@ export class EditarusuarioComponent implements OnInit {
   
   usuario  = new UsuarioModel();
   usuarios: [] = [];
+  roles:RoleModel [] = [];
 
-  constructor(private auth:AuthService, private router:ActivatedRoute, private router1: Router, private location:Location,) {
+  constructor(private auth:AuthService, private router:ActivatedRoute, private router1: Router, private location:Location, private rol:RoleService) {
     this.router.params.subscribe( params => {
       this.getFormato(params['id']);
     })
@@ -25,6 +28,7 @@ export class EditarusuarioComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.rol.getRoles().subscribe((resp:any)=>{this.roles=resp;});
   }
 
   getFormato( id : string ){
@@ -68,7 +72,7 @@ export class EditarusuarioComponent implements OnInit {
       }else{
         this.usuario.estado = 0;
       }
-      switch(form.value['rol']) {
+      /* switch(form.value['rol']) {
         case 2:
           this.usuario.role = 2;
           break;
@@ -77,7 +81,8 @@ export class EditarusuarioComponent implements OnInit {
           break;
         default:
           this.usuario.role = 0;
-      }
+      } */
+      this.usuario.role = Number(this.usuario.role);
     }else{
       switch(form.value['estado']) {
         case 0:
@@ -94,7 +99,7 @@ export class EditarusuarioComponent implements OnInit {
       }
       console.log('%ceditarusuario.component.ts line:85', 'color: white; background-color: #007acc;',form.value);
       console.log('%ceditarusuario.component.ts line:86 this.usuario', 'color: white; background-color: #007acc;', this.usuario);
-      switch(form.value['rol']) {
+      /* switch(form.value['rol']) {
         case '2':
           this.usuario.role = 2;
           break;
@@ -109,7 +114,8 @@ export class EditarusuarioComponent implements OnInit {
           break;
         default:
           this.usuario.role = 0;
-      }
+      } */
+      this.usuario.role = Number(this.usuario.role);
     }
     
     

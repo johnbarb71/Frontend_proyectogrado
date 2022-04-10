@@ -1,0 +1,42 @@
+<h1>Editar Proveedores</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Listado de Proveedores</h3>
+                    </div>
+     
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Nombre</th>
+                                    <th>Linea</th>
+                                    <th>Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  *ngFor="let proveedor of proveedores, let i = index">
+                                <td scope="row">{{i+1}}</td>
+                                <td>{{proveedor.nombre}}</td>
+                                <td>{{proveedor.id}}</td>
+                                <td class="text-center">
+                                    <button (click)="buscarId(proveedor.id)" class="btn btn-success mr-1">
+                                        <i class="fa fa-pen"></i>
+                                    </button>
+                                </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    
+

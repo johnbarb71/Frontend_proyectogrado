@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-olive elevation-4">
     <!-- Brand Logo -->
-    <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="brand-link navbar-success">
+    <a [routerLink]="['/home']" class="brand-link navbar-olive" (click)="refresh()">
       <img src="../../../../assets/img/DSA.jpg" alt="DSA Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">DSA S.A.S.</span>
     </a>
@@ -36,7 +36,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-header">ADMINISTRACIÓN</li>
           <!-- Menu usuario -->
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a [routerLink]="['usuario']" class="nav-link active">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -45,29 +45,87 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a routerLink="usuario/users/activar" routerLinkActive="active-link" class="nav-link" >
-                  <i class="fa fa-key nav-icon"></i>
-                  <p>Cambiar claves</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a routerLink="usuario/users/editar" routerLinkActive="active-link" class="nav-link">
-                  <i class="fa fa-cog nav-icon"></i>
-                  <p>Actualizar usuarios</p>
-                </a>
-              </li>
+
               <li class="nav-item">
                 <a routerLink="usuario/agregar" routerLinkActive="active-link" class="nav-link">
                   <i class="fa fa-plus nav-icon"></i>
                   <p>Agregar usuarios</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a routerLink="usuario/users/editar" routerLinkActive="active-link" class="nav-link">
+                  <i class="fa fa-cog nav-icon"></i>
+                  <p>Actualizar usuarios</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a routerLink="usuario/users/activar" routerLinkActive="active-link" class="nav-link" >
+                  <i class="fa fa-key nav-icon"></i>
+                  <p>Cambiar claves</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+          <!-- Menu Role -->
+          <li class="nav-item">
+            <a [routerLink]="['roles']" class="nav-link active">
+              <i class="nav-icon fas fa-address-book"></i>
+              <p>
+                Roles
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a routerLink="roles/agregar" routerLinkActive="active-link" class="nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Agregar rol</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a routerLink="roles/editar" routerLinkActive="active-link" class="nav-link">
+                  <i class="fa fa-cog nav-icon"></i>
+                  <p>Actualizar rol</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+           <!-- Menu Sucursales -->
+           <li class="nav-item">
+            <a [routerLink]="['sucursales']" class="nav-link active">
+              <i class="nav-icon fas fa-building"></i>
+              <p>
+                Sucursales
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a routerLink="sucursales/agregar" routerLinkActive="active-link" class="nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Agregar sucursal</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a routerLink="sucursales/editar" routerLinkActive="active-link" class="nav-link">
+                  <i class="fa fa-cog nav-icon"></i>
+                  <p>Actualizar sucursal</p>
+                </a>
+              </li>
+              
             </ul>
           </li>
           <!-- Menú proveedor -->
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link active">
+            <a [routerLink]="['proveedor']" routerLinkActive="active-link" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Proveedores
@@ -75,16 +133,18 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="fa fa-cog nav-icon nav-icon"></i>
-                  <p>Actualizar proveedor</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a [routerLink]="['proveedor/agregar']" routerLinkActive="active-link" class="nav-link">
                   <i class="fa fa-plus nav-icon"></i>
                   <p>Agregar proveedor</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a [routerLink]="['proveedor/editar']" routerLinkActive="active-link" class="nav-link">
+                  <i class="fa fa-cog nav-icon nav-icon"></i>
+                  <p>Actualizar proveedor</p>
                 </a>
               </li>
             </ul>
@@ -93,7 +153,7 @@
 
           <!-- Menú producto -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a [routerLink]="['productos']" routerLinkActive="active-link" class="nav-link active">
               <i class="nav-icon fa fa-cubes"></i>
               <p>
                 Productos
@@ -102,21 +162,50 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a [routerLink]="['productos/agregar']" routerLinkActive="active-link" class="nav-link">
                   <i class="fa fa-plus nav-icon"></i>
                   <p>Agregar productos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                <a [routerLink]="['productos/editar']" routerLinkActive="active-link" class="nav-link">
                   <i class="fa fa-cog nav-icon"></i>
                   <p>Editar productos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
+                <a [routerLink]="['productos/consultar']" routerLinkActive="active-link" class="nav-link">
                   <i class="fas fa-copy nav-icon"></i>
                   <p>Consultar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav-header">INFORMACIÓN</li>
+
+          <!-- Menú de información del inventario -->
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fa fa-file"></i>
+              <p>
+                Informes
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/layout/top-nav.html" class="nav-link">
+                  <i class="fa fa-list-ol nav-icon"></i>
+                  <p>Informe de inventario</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/layout/top-nav.html" class="nav-link">
+                  <i class="fa fa-list-ul nav-icon"></i>
+                  <p>Informe de inventario por proveedor</p>
                 </a>
               </li>
             </ul>
@@ -126,7 +215,7 @@
 
           <!-- Menú PARA REALIZAR INVENTARIO -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fa fa-cube"></i>
               <p>
                 Inventario
@@ -142,7 +231,7 @@
               </li>
             </ul>
           </li>
-          
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

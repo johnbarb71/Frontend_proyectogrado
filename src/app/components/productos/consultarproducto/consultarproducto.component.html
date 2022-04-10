@@ -1,0 +1,122 @@
+<h1>Editar campos del producto</h1>
+<section class="content">
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Editar producto</h3>
+        </div>
+        
+        
+        <form class="form-horizontal" (ngSubmit)="imprimir(f)" #f="ngForm">
+            <div class="card-body">
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Código1</label>
+                    <div class="col-sm-6">
+                        <input type="text" 
+                                class="form-control"
+                                name="codigo1"
+                                [(ngModel)]="producto.codigo1"
+                                readonly
+                        >
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Código2</label>
+                    <div class="col-sm-6">
+                        <input type="text" 
+                                class="form-control"
+                                name="codigo2"
+                                [(ngModel)]="producto.codigo2"
+                                readonly
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Nombre</label>
+                    <div class="col-sm-6">
+                        <input type="text" 
+                                class="form-control"
+                                name="nombre"
+                                [(ngModel)]="producto.nombre"
+                                readonly
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Linea</label>
+                    <div class="col-sm-6">
+                        <input type="text" 
+                                class="form-control"
+                                name="linea"
+                                [(ngModel)]="producto.linea"
+                                readonly
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Proveedor</label>
+                    <div class="col-sm-6">
+                        <select class="custom-select" 
+                                id="inputGroupSelect01"
+                                name="linea"
+                                [(ngModel)]="producto.linea"
+                                disabled
+                                >
+                            <option *ngFor="let proveedor of proveedores;" value="{{proveedor.id}}">{{proveedor.nombre}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Paquete por caja</label>
+                    <div class="col-sm-6">
+                        <input type="text" 
+                                class="form-control"
+                                name="paqxcaja"
+                                [(ngModel)]="producto.paqxcaja"
+                                readonly
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Paquete por display</label>
+                    <div class="col-sm-6">
+                        <input type="text" 
+                                class="form-control"
+                                name="paqxdisp"
+                                [(ngModel)]="producto.paqxdisp"
+                                readonly
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Unidades por caja</label>
+                    <div class="col-sm-6">
+                        <input type="text" 
+                                class="form-control"
+                                name="unixcaja"
+                                [(ngModel)]="producto.unixcaja"
+                                readonly
+                        >
+                    </div>
+                </div>
+
+                <!-- <button type="submit" class="btn btn-success">Actualizar</button> -->
+            </div>
+        </form>
+        <div class="form-group row ml-4">
+            <button (click)='regresarPagina()' class="btn btn-default float-left">Cancelar</button>
+        </div>
+        
+    </div>
+
+        
+</section>
+
+

@@ -28,9 +28,9 @@
                                 <td *ngIf="usuario.estado===1">Activo</td>
                                 <td *ngIf="usuario.estado===0">No Activo</td>
                                 <td [ngSwitch]="usuario.role">
-                                    <span *ngSwitchCase="2">superadmin</span>
-                                    <span *ngSwitchCase="1">admin</span>
-                                    <span *ngSwitchDefault>usuario normal</span>
+                                    <span *ngSwitchCase="3">Superusuario</span>
+                                    <span *ngSwitchCase="2">Administrador</span>
+                                    <span *ngSwitchDefault>Usuario</span>
                                 </td>
                                 <td [ngSwitch]="usuario.id" class="text-center">
                                     <button *ngSwitchCase="1" class="btn btn-danger mr-1"
