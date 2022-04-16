@@ -1,0 +1,138 @@
+<h1>Conteo de mercancía</h1>
+<section class="content">
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Conteo de producto por código de barras</h3>
+        </div>
+        
+        <!-- <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Código</label>
+            <div class="col-sm-3">
+                <input type="text" 
+                        class="form-control"
+                        name="codigobarras"
+                        required
+                        autocomplete="off"
+                        #codigobarras
+                >
+            </div>
+            <button (click)="getProducto(codigobarras.value)" >Buscar</button>
+        </div>
+         -->
+        <form class="form-horizontal" (ngSubmit)="guardar(f)" #f="ngForm">
+            <div class="card-body">
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Código de barras</label>
+                    <div class="input-group col-sm-5">
+                        <input type="text" 
+                                class="form-control"
+                                placeholder="Código de barras"
+                                required
+                                minlength="4"
+                                autocomplete="off"
+                                #terCodigo1
+                                name="codigo1"
+                                [(ngModel)]="producto.codigo1"
+                        >
+                        <span class="input-group-btn">
+                            <button type="button" (click)='buscarCodigo(terCodigo1.value,this.suc)' class="btn btn-info btn-flat">Buscar</button>
+                        </span>
+                        
+                    </div>
+                    
+                        
+                </div>
+
+                <!-- Nombre -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Nombre</label>
+                    <div class="col-sm-10">
+                        <input type="text" 
+                                class="form-control"
+                                name="nombre"
+                                [(ngModel)]="producto.nombre"
+                                readonly
+                        >
+                    </div>
+                </div>
+                <!-- Gondola -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Gondola</label>
+                    <div class="col-sm-2">
+                        <input type="number" 
+                                class="form-control"
+                                name="cantidadgondola"                                
+                                min="0"
+                                autocomplete="off"
+                                [(ngModel)]="cantidadgondola" 
+                        >
+                    </div>
+
+                    <label class="col-sm-1 col-form-label">Cantidad</label>
+                    <div class="col-sm-2">
+                        <input type="number" 
+                                class="form-control"
+                                name="gondola"
+                                [(ngModel)]="producto.gondola"
+                                autocomplete="off"
+                                readonly
+                        >
+                    </div>
+
+                </div>
+
+                <!-- Bodega -->
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Bodega</label>
+                    <div class="col-sm-2">
+                        <input type="number" 
+                                class="form-control"
+                                name="cantidadbodega"
+                                [(ngModel)]="cantidadbodega"
+                                min="0"
+                                autocomplete="off"
+                        >
+                    </div>
+
+                    <label class="col-sm-1 col-form-label">Cantidad</label>
+                    <div class="col-sm-2">
+                        <input type="number" 
+                                class="form-control"
+                                name="bodega"
+                                [(ngModel)]="producto.bodega"
+                                readonly
+                        >
+                    </div>
+
+                </div>
+                <!-- Role y sucursal -->
+                <!-- <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Sucursal</label>
+                    <div class="col-sm-2">
+                        <input type="number" 
+                                class="form-control"
+                                name="id_sucursal"
+                                [(ngModel)]="producto.id_sucursal"
+                                readonly
+                        >
+                    </div>
+                </div> -->
+
+                
+                <button type="submit" class="btn btn-success">Agregar</button>
+            </div>  
+        </form>
+
+        <div class="form-group row ml-4">
+            <button (click)='regresarPagina()' class="btn btn-default float-left">Cancelar</button>
+        </div>
+        
+    </div>
+
+        
+</section>
+
+
+

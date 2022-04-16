@@ -34,6 +34,11 @@ export class ProductosService {
     return this.http.get(`${this.url}/productos/producto/${codigo1}`,{headers: reqHeader })
   }
 
+  getProductoCodInv(codigo1:string,id_suc:string){
+    const reqHeader =  this.auth.headerToken();
+    return this.http.get(`${this.url}/productos/productocod/${codigo1}/${id_suc}`,{headers: reqHeader })
+  }
+
   getproductonombre(nombre:string){
     const reqHeader =  this.auth.headerToken();
     return this.http.get(`${this.url}/productos/producto/buscar/${nombre}`,{headers: reqHeader })
@@ -58,15 +63,15 @@ export class ProductosService {
       authData,{headers: reqHeader });
   }
 
-  updProductoCodigo(producto:ProductoModel){
+  updProductoCodigo(producto:ProductoModel,id_suc:string){
     const authData = {
-      id: producto.id,
       gondola: producto.gondola,
       bodega: producto.bodega
     };
     const reqHeader =  this.auth.headerToken();
+    console.log('%cproductos.service.ts line:72 object', 'color: #007acc;',producto.codigo1,id_suc);
     return this.http.put(
-      `${ this.url }/productos/producto${producto.id}`,
+      `${ this.url }/productos/producto/${producto.codigo1}/${id_suc}`,
       authData,{headers: reqHeader });
   }
 
@@ -86,5 +91,14 @@ export class ProductosService {
     return this.http.post(
       `${ this.url }/productos`,
       authData,{headers: reqHeader });
+  }
+
+  getInformesucursal(id_sucursal:string){
+    const reqHeader =  this.auth.headerToken();
+    return this.http.get(`${this.url}/informes/linea/${id_sucursal}`,{headers: reqHeader }).pipe(map(
+      data =>{
+        return data['producto'];
+      }
+    ))
   }
 }

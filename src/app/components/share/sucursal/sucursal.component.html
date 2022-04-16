@@ -1,0 +1,38 @@
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a [routerLink]="['/inicio']"><b>Despensa San Agustín S.A.S.</b></a>
+        </div>
+
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Seleccione una para continuar</p>
+                <form class="form-horizontal" (ngSubmit)="seleccion(f)" #f="ngForm">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-sm-6 col-form-label">Sucursales:</label>
+                            <div class="col-sm-5">
+                                <select class="custom-select" 
+                                        id="inputGroupSelect01"
+                                        name="sucursalesMostrar"
+                                        [(ngModel)]="sucursalesMostrar"
+                                        >
+                                    <option *ngFor="let sucursal of sucursalesDisponibles;" value="{{sucursal.id}}">{{sucursal.nombre}}</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Seleccionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
+

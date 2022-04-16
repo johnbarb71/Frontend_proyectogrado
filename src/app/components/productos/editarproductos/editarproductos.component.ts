@@ -50,7 +50,7 @@ export class EditarproductosComponent implements OnInit {
     let timerInterval;
     Swal.fire({
       title: 'Cargando',
-      timer: 3000,
+      timer: 1500,
       didOpen: () => {
         Swal.showLoading()
       },

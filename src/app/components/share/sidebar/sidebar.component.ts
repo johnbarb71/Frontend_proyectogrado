@@ -5,6 +5,8 @@ import {Observable} from 'rxjs';
 import { RouterLinkActive } from '@angular/router';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { SucursalModel } from 'src/app/models/sucursal.model';
+import { SucursalService } from 'src/app/services/sucursal.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,16 +16,20 @@ import { Location } from '@angular/common';
 export class SidebarComponent implements OnInit {
 
   clientes$: Observable<UsuarioModel>;
-  cliente : UsuarioModel;  
+  cliente : UsuarioModel;
+  sucursal : SucursalModel;
+  sucAct: string = '';
+  sucursalNum$: Observable<SucursalModel>;
 
-  constructor(private auth:AuthService, public router: Router, public location: Location) {  
+  constructor(private auth:AuthService, public router: Router, public location: Location, private sucurs:SucursalService) {  
     this.cliente = auth.leerUsuario();
-    /* console.log('%csidebar.component.ts line:18 this.cliente', 'color: #007acc;', this.cliente); */
+    this.getSucursalActualID();
   }
 
   
 
   ngOnInit(): void {
+
   }
 
   refresh(): void {
@@ -32,5 +38,19 @@ export class SidebarComponent implements OnInit {
 		this.router.navigate([decodeURI(this.location.path())]);
 		});
 	}
+
+  /* lee el token del storage y lo convierte en objeto observable */
+  getSucursalActualID(){
+    this.sucurs.leerSucuAct();
+    this.sucursalNum$ = this.sucurs.getSucursalNum$();
+    this.sucursalNum$.subscribe((resp:any )=> {
+      this.sucursal = resp;
+    });
+  }
+
+
+
+
+
   
 }

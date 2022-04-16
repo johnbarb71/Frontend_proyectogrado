@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 //finde Observable
 import { map } from 'rxjs/operators';
+import { SucursalModel } from '../models/sucursal.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class AuthService {
   userData: any = null;
   usuario1: UsuarioModel;
   guest: UsuarioModel;
-  private clientes$ = new Subject<UsuarioModel>();
+  numSucursal: string;
+  private numSucursal$ = new Subject<string>();
 
   constructor( private http : HttpClient ) {
     this.leerTokenLocSt();
@@ -30,6 +32,8 @@ export class AuthService {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       localStorage.removeItem('expira');
+      localStorage.removeItem('suc');
+      localStorage.removeItem('sucAct');
       return;
     }
 
@@ -41,7 +45,7 @@ export class AuthService {
       return this.http.post(`${ this.url }/login`,
       loginData).pipe(
         map((resp:any) => {
-          this.guardarToken(resp['token'],resp['user']);
+          this.guardarToken(resp['token'],resp['user'], resp['id_sucursal']/* [0]['id_sucursal'] */);
           this.leerUsuario();
         })
         )
@@ -116,10 +120,11 @@ export class AuthService {
       return this.http.get(`${this.url}/user/getusuario/${id}`,{headers: reqHeader })
     }
 
-    private guardarToken(idToken: string, user:string){
+    private guardarToken(idToken: string, user:string, sucursal:string){
       this.userToken = idToken;
       localStorage.setItem('token',idToken);
       localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('suc',JSON.stringify(sucursal));
       //algoritmo de exp de Token
       let fecha = new Date();
       fecha.setSeconds( 3600 );
@@ -172,6 +177,25 @@ export class AuthService {
     public leerUsuario(){
       return this.usuario1 = JSON.parse((localStorage.getItem('user')));
     }
-    //Fin de Observable USUARIO
+
+    public leerSucu(){
+      return JSON.parse((localStorage.getItem('suc')));
+    }
+    
+ 
+    guardarTokenSuc(sucursal:string){
+      localStorage.setItem('suc',JSON.stringify(sucursal));
+    }
+
+    guardarSucAct(sucursal:string){
+      localStorage.setItem('sucAct',JSON.stringify(sucursal));
+    }
   
+    //Método para leer sucursal del LocalStorage para el NAVBAR
+    public leerSucuAct(){
+      return this.numSucursal = JSON.parse(localStorage.getItem('sucAct'));
+    }
+    getSucursalNum$(): Observable<string>{
+      return this.numSucursal$.asObservable();
+    }
 }

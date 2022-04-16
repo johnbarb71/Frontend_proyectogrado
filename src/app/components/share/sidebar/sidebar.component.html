@@ -18,6 +18,12 @@
           <p class="d-block">{{cliente.name}}</p>
         </div>
       </div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <i class="fas fa-building fa-2x"></i>
+        </div>
+        <p class="ml-4 d-block" *ngIf="(sucursal)">Sede:{{sucursal.nombre}}</p>
+      </div>
 
       <!-- SidebarSearch Form -->
       <!-- <div class="form-inline">
@@ -186,7 +192,7 @@
 
           <!-- Menú de información del inventario -->
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a [routerLink]="['informes']" routerLinkActive="active-link" class="nav-link active">
               <i class="nav-icon fa fa-file"></i>
               <p>
                 Informes
@@ -195,7 +201,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a [routerLink]="['informes/informe']" routerLinkActive="active-link" class="nav-link">
                   <i class="fa fa-list-ol nav-icon"></i>
                   <p>Informe de inventario</p>
                 </a>
@@ -203,7 +209,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a [routerLink]="['informes/informe/linea']" routerLinkActive="active-link" class="nav-link">
                   <i class="fa fa-list-ul nav-icon"></i>
                   <p>Informe de inventario por proveedor</p>
                 </a>
@@ -215,7 +221,7 @@
 
           <!-- Menú PARA REALIZAR INVENTARIO -->
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a [routerLink]="['inventarios']" routerLinkActive="active-link" class="nav-link active">
               <i class="nav-icon fa fa-cube"></i>
               <p>
                 Inventario
@@ -224,7 +230,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a [routerLink]="['inventarios/agregar']" routerLinkActive="active-link" class="nav-link active">
                   <i class="fa fa-puzzle-piece nav-icon"></i>
                   <p>Realizar inventario</p>
                 </a>

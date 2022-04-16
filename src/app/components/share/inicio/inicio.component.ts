@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLinkActive, RouterLink } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-inicio',
@@ -8,9 +9,14 @@ import { RouterLinkActive, RouterLink } from '@angular/router';
 })
 export class ShareInicioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth:AuthService) {
+    
+   }
 
   ngOnInit(): void {
+    
   }
+
+  
 
 }

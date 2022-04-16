@@ -12,4 +12,5 @@ export class ProductoModel{
     bodega: number;
     resultado: number;
     cantidad: number;
+    id_sucursal: number;
 }

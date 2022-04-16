@@ -27,7 +27,7 @@ export class AgregarproductosComponent implements OnInit {
   }
 
   guardar(form:NgForm){
-    if (form.invalid) {
+    if (form.value==[]) {
       console.log('%cagregarproveedor.component.ts line:25 object', 'formulario no valido');
       return;
     }

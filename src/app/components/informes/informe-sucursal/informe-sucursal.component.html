@@ -1,0 +1,56 @@
+<h1>Informe de conteo de productos</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div id="htmlData" class="col">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Total productos con existencias: {{DataArray.length}}</h3>
+                        <button class="ml-5" (click)="downloadPDF()">imprimir</button>
+                    </div>
+     
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Gondola</th>
+                                    <th>Bodega</th>
+                                    <th>Resultado</th>
+                                    <th>Existencias</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  *ngFor="let producto of DataArray  | paginate: { itemsPerPage: itemxpagina, currentPage: pagina }, let i = index">
+                                    <td scope="row">{{ itemxpagina * (pagina - 1) + (i+1) }}</td>
+                                <td>{{producto.codigo1}}</td>
+                                <td>{{producto.nombre}}</td>
+                                <td>{{producto.gondola}}</td>
+                                <td>{{producto.bodega}}</td>
+                                <td>{{producto.resultado}}</td>
+                                <td>{{producto.cantidad}}</td>
+                                <td>{{producto.total}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center mt-3">
+                            <pagination-controls (pageChange)="pagina = $event"
+                                            previousLabel="Anterior"
+                                            nextLabel="Siguiente">
+                        </pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    
+
+
+
+

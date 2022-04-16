@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {NgxPaginationModule} from 'ngx-pagination';
+/* Modal popup */
+import {MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +43,13 @@ import { SucursalesComponent } from './components/sucursales/sucursales/sucursal
 import { EditarsucursalesComponent } from './components/sucursales/editarsucursales/editarsucursales.component';
 import { EditarsucursalComponent } from './components/sucursales/editarsucursal/editarsucursal.component';
 import { AgregarsucursalComponent } from './components/sucursales/agregarsucursal/agregarsucursal.component';
+import { InventarioComponent } from './components/inventarios/inventario/inventario.component';
+import { AgregarinventarioComponent } from './components/inventarios/agregarinventario/agregarinventario.component';
+import { PopupsucurComponent } from './components/share/popupsucur/popupsucur.component';
+import { SucursalComponent } from './components/share/sucursal/sucursal.component';
+import { InformeComponent } from './components/informes/informe/informe.component';
+import { InformeSucursalComponent } from './components/informes/informe-sucursal/informe-sucursal.component';
+import { InformeSucursalLineaComponent } from './components/informes/informe-sucursal-linea/informe-sucursal-linea.component';
 
 @NgModule({
   declarations: [
@@ -76,14 +86,23 @@ import { AgregarsucursalComponent } from './components/sucursales/agregarsucursa
     SucursalesComponent,
     EditarsucursalesComponent,
     EditarsucursalComponent,
-    AgregarsucursalComponent
+    AgregarsucursalComponent,
+    InventarioComponent,
+    AgregarinventarioComponent,
+    PopupsucurComponent,
+    SucursalComponent,
+    InformeComponent,
+    InformeSucursalComponent,
+    InformeSucursalLineaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,4 +5,5 @@ export class UsuarioModel{
     name: string;
     estado: number;
     role:number;
+    id_sucursal:number;
 }

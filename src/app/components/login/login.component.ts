@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   usuario: UsuarioModel = new UsuarioModel;
   sesionVigente = false;
+  sucursales:string;
 
   constructor(private auth:AuthService, private router:Router) { }
 
@@ -37,8 +38,10 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.usuario).subscribe(resp=>{
       if(this.sesionVigente){
         localStorage.setItem('email',this.usuario.email);
+        this.sucursales = this.auth.leerSucu();
+        /* this.escogerSuc(this.sucursales); */
       }
-      this.router.navigateByUrl('/home'); 
+      this.router.navigateByUrl('/sucursal'); 
     },(err)=>{
       if(err.error.message === 'Login failed'){
         Swal.fire({
@@ -61,4 +64,11 @@ export class LoginComponent implements OnInit {
     
   }
 
+  /* private escogerSuc(sucursales:string){
+    for (let sucursal of sucursales){
+      console.log('%clogin.component.ts line:69 sucursal', 'color: #007acc;', sucursal['id_sucursal']); 
+    }
+  } */
+
+  
 }

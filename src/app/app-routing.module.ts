@@ -34,14 +34,22 @@ import { SucursalesComponent } from './components/sucursales/sucursales/sucursal
 import { EditarsucursalesComponent } from './components/sucursales/editarsucursales/editarsucursales.component';
 import { EditarsucursalComponent } from './components/sucursales/editarsucursal/editarsucursal.component';
 import { AgregarsucursalComponent } from './components/sucursales/agregarsucursal/agregarsucursal.component';
-
+import { InventarioComponent } from './components/inventarios/inventario/inventario.component';
+import { AgregarinventarioComponent } from './components/inventarios/agregarinventario/agregarinventario.component';
+import { PopupsucurComponent } from './components/share/popupsucur/popupsucur.component';
+import { SucursalComponent } from './components/share/sucursal/sucursal.component';
+import { InformeComponent } from './components/informes/informe/informe.component';
+import { InformeSucursalComponent } from './components/informes/informe-sucursal/informe-sucursal.component';
+import { InformeSucursalLineaComponent } from './components/informes/informe-sucursal-linea/informe-sucursal-linea.component';
 
 const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
+  { path: 'sucursal', component: SucursalComponent, canActivate:[ AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate:[ AuthGuard],
     children: [
+      
       { path: '', pathMatch: 'full', redirectTo: 'inicio' },
       { path: 'inicio', component: ShareInicioComponent, canActivate:[ AuthGuard] },
       { path: 'contacto', component: ContactoComponent, canActivate:[ AuthGuard] },
@@ -75,7 +83,15 @@ const routes: Routes = [
       { path: 'sucursales/editar/:id', component: EditarsucursalComponent, canActivate:[ AuthGuard] },
       { path: 'sucursales/editar', component: EditarsucursalesComponent, canActivate:[ AuthGuard] },
       { path: 'sucursales/agregar', component: AgregarsucursalComponent, canActivate:[ AuthGuard]},
-      
+      /* Inventarios */
+      { path: 'inventarios', component: InventarioComponent, canActivate:[ AuthGuard] },
+      { path: 'inventarios/agregar', component: AgregarinventarioComponent, canActivate:[ AuthGuard]},
+      /* Inventarios */
+      { path: 'informes', component: InformeComponent, canActivate:[ AuthGuard] },
+      { path: 'informes/informe', component: InformeSucursalComponent, canActivate:[ AuthGuard]},
+      { path: 'informes/informe/:sucursal', component: InformeSucursalComponent, canActivate:[ AuthGuard]},
+      { path: 'informes/informe/linea', component: InformeSucursalLineaComponent, canActivate:[ AuthGuard]},
+      { path: 'informes/informe/linea/:sucursal/:linea', component: InformeSucursalLineaComponent, canActivate:[ AuthGuard]},
     ] },
   
   { path: '', pathMatch: 'full', redirectTo: 'home' },
