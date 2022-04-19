@@ -1,1 +1,87 @@
-<p>informe-sucursal-linea works!</p>
+<h1>Informe de conteo de productos por Proveedor</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card card-success">
+                    <div class="card-header">
+                        <h3 class="card-title">Informe de productos por Proveedor</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <p>Seleccione un proveedor</p>
+                        <div class="form-group row">
+                            <label class="col-sm-1 col-form-label">Proveedor</label>
+                            <div class="col-sm-5">
+                                <select class="custom-select" 
+                                        #terCodigo
+                                        id="inputGroupSelect01"
+                                        name="linea"
+                                        autocomplete="off"
+                                        >
+                                    <option *ngFor="let proveedor of proveedores;" value="{{proveedor.id}}">{{proveedor.nombre}}</option>
+                                </select>
+                            </div>
+                            
+                            <span class="input-group-btn">
+                                <button type="button" (click)='buscarxlinea(this.sucAct,terCodigo.value)' class="btn btn-info btn-flat">Buscar</button>
+                            </span>
+                            <label class="col-sm-2 col-form-label">Total: {{DataArray.length}}</label>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-1 col-form-label">Imprimir</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" (click)="downloadPDF()" class="btn btn-info btn-flat">
+                                            <i class="fa fa-print" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Código</th>
+                                        <th>Nombre</th>
+                                        <th>Gondola</th>
+                                        <th>Bodega</th>
+                                        <th>Resultado</th>
+                                        <th>Existencias</th>
+                                        <th>Faltante</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr  *ngFor="let producto of DataArray  | paginate: { itemsPerPage: itemxpagina, currentPage: pagina }, let i = index">
+                                        <td scope="row">{{ itemxpagina * (pagina - 1) + (i+1) }}</td>
+                                    <td>{{producto.codigo1}}</td>
+                                    <td>{{producto.nombre}}</td>
+                                    <td>{{producto.gondola}}</td>
+                                    <td>{{producto.bodega}}</td>
+                                    <td>{{producto.resultado}}</td>
+                                    <td>{{producto.cantidad}}</td>
+                                    <td>{{producto.total}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-center mt-3">
+                                <pagination-controls (pageChange)="pagina = $event"
+                                                previousLabel="Anterior"
+                                                nextLabel="Siguiente">
+                            </pagination-controls>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    
+

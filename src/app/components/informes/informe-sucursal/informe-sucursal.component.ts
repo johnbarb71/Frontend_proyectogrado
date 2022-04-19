@@ -5,8 +5,8 @@ import { ProductosService } from 'src/app/services/productos.service';
 import { SucursalService } from 'src/app/services/sucursal.service';
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
-//import html2canvas from 'html2canvas';
 import autoTable from 'jspdf-autotable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-informe-sucursal',
@@ -23,21 +23,21 @@ export class InformeSucursalComponent implements OnInit {
   public total: number;
   cargando = false;
 
-  constructor(private produc:ProductosService, private sucur:SucursalService, private auth:AuthService) {
+  constructor(private router:Router,private produc:ProductosService, private sucur:SucursalService, private auth:AuthService) {
+    
+   }
+
+  ngOnInit(): void {
     this.cargando = true;
     this.loading();
-    this.sucAct = auth.leerSucuAct();
+    this.sucAct = this.auth.leerSucuAct();
     this.produc.getInformesucursal(this.sucAct).subscribe(
       data => {
         this.DataArray = data as string[];
       },
       (error) => console.log(error)
     );
-    this.cargando = false;  
-    
-   }
-
-  ngOnInit(): void {
+    this.cargando = false;
   }
 
   //Método para mostrar sweetalert para la carga de Proveedores
@@ -75,16 +75,14 @@ export class InformeSucursalComponent implements OnInit {
 
   public downloadPDF(){
     var doc = new jsPDF('p', 'pt');
-    //
-    
-    //
+    var totalPagesExp = '{total_pages_count_string}'
     doc.setFontSize(9);
     doc.setTextColor(100);
     autoTable(doc, {
       head: this.headRows(),
       body: this.bodyRows(),
       theme: 'grid',
-      margin: { top: 25, bottom:10 },
+      margin: { top: 25, bottom:20 },
       styles: { overflow: 'linebreak',fontSize: 6},
       showHead: "everyPage",
       didDrawPage: function (data) {
@@ -92,15 +90,47 @@ export class InformeSucursalComponent implements OnInit {
         doc.setFontSize(10);
         doc.setTextColor(40);
         doc.text("Despensa San Agustín S.A.S. - Inventario de productos", data.settings.margin.left, 22);
-        // FOOTER
+        //Fin Header
         // Footer
-        var str = "Page " + doc.internal.pages[2];
-      }  
+        var str = 'Página ' + doc.getNumberOfPages() 
+        if (typeof doc.putTotalPages === 'function') { 
+          str = str + ' de ' + totalPagesExp 
+        }
+        var pageSize = doc.internal.pageSize 
+        var pageHeight = pageSize.height ? pageSize.height : pageSize.getHeight() 
+        doc.setFontSize(5);
+        doc.text(str, data.settings.margin.left, pageHeight - 10) 
+        //Fin Footer
+      },
     });
-    //Numero de paginas
-    
-    //Fin numero de paginas
+    //Número de páginas
+    if (typeof doc.putTotalPages === 'function') { 
+      doc.putTotalPages(totalPagesExp) 
+    } 
+    //Fin numero de páginas
     doc.save(`${new Date().toISOString().substring(0, 10)}_Inventario.pdf`)
+  }
+
+  //Borrar gondola,bodega,resultado,cantidad de la tabla Inventarios
+  eliminarCantidades(id_sucursal:string){
+    Swal.fire({
+      title: '¿Está seguro de borrar el conteo? Se borrarán los datos permanentemente',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Borrar',
+      denyButtonText: `No borrar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.produc.putCerosCantidades(id_sucursal).subscribe((resp:any)=>{
+          console.log('%cinforme-sucursal.component.ts line:125 resp', 'color: #007acc;', resp);
+        })
+        this.router.navigateByUrl('home/informes');
+        Swal.fire('¡Borrado!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('No hay cambios', '', 'info')
+      }
+    })
   }
 
 }

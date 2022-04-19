@@ -1,11 +1,11 @@
-<h1>Tabla de usuarios</h1>
+<h1>Tabla de usuarios por sucursal</h1>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col">
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title">Selección de usuarios para cambiar la contraseña</h3>
+                        <h3 class="card-title">Selección de usuarios para actualizar</h3>
                     </div>
      
                     <div class="card-body">
@@ -32,14 +32,10 @@
                                     <span *ngSwitchCase="2">Administrador</span>
                                     <span *ngSwitchDefault>Usuario</span>
                                 </td>
-                                <td [ngSwitch]="usuario.id" class="text-center">
-                                    <button *ngSwitchCase="1" class="btn btn-danger mr-1"
-                                            (click)="prohibido()">
-                                            <i class="fa fa-key"></i>
-                                    </button>
-                                    <button *ngSwitchDefault class="btn btn-success mr-1"
+                                <td class="text-center">
+                                    <button class="btn btn-success mr-1"
                                             (click)="buscarId(usuario.id)">
-                                            <i class="fa fa-key"></i>
+                                            <i class="fa fa-pen"></i>
                                     </button>
                                 </td>
                                 </tr>

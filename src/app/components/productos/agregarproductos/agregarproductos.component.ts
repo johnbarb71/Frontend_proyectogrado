@@ -27,7 +27,8 @@ export class AgregarproductosComponent implements OnInit {
   }
 
   guardar(form:NgForm){
-    if (form.value==[]) {
+    console.log('%cagregarproductos.component.ts line:30 form.value', 'color: #007acc;', form.value);
+    if (form.invalid) {
       console.log('%cagregarproveedor.component.ts line:25 object', 'formulario no valido');
       return;
     }
@@ -43,20 +44,20 @@ export class AgregarproductosComponent implements OnInit {
         form.reset(); 
       }
     },(err) => {
-      /* if(err.error.error.message === 'The nombre field is required.'){
+      if(err.status === 400){
         Swal.fire({
           icon: 'error',
           allowOutsideClick: false,
-          title: 'Error al crear proveedor.',
+          title: 'Faltan campos.',
           text: 'El nombre es requerido.',
         })
         return;
-      } */
+      }
       Swal.fire({
         icon: 'error',
         allowOutsideClick: false,
-        title: 'Error al crear proveedor.',
-        text: err.error.error,
+        title: 'Error al crear producto.',
+        text: err.status,
       })
       console.log('%cagregarproductos.component.ts line:53 err', 'color: #007acc;', err);
       

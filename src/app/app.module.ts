@@ -50,6 +50,8 @@ import { SucursalComponent } from './components/share/sucursal/sucursal.componen
 import { InformeComponent } from './components/informes/informe/informe.component';
 import { InformeSucursalComponent } from './components/informes/informe-sucursal/informe-sucursal.component';
 import { InformeSucursalLineaComponent } from './components/informes/informe-sucursal-linea/informe-sucursal-linea.component';
+import { SucusuariosComponent } from './components/usuarios/sucusuarios/sucusuarios.component';
+import { SucusuarioComponent } from './components/usuarios/sucusuario/sucusuario.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +95,9 @@ import { InformeSucursalLineaComponent } from './components/informes/informe-suc
     SucursalComponent,
     InformeComponent,
     InformeSucursalComponent,
-    InformeSucursalLineaComponent
+    InformeSucursalLineaComponent,
+    SucusuariosComponent,
+    SucusuarioComponent
   ],
   imports: [
     BrowserModule,

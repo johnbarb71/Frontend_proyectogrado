@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { SucursalModel } from '../models/sucursal.model';
+import { SucUsuModel } from '../models/sucursal_usuario.model';
 //Observable
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
@@ -69,4 +70,44 @@ export class SucursalService {
   getSucursalNum$(): Observable<SucursalModel>{
     return this.numSucursal$.asObservable();
   }
+
+  //Métodos para Sucursal-Usuario
+  getSucursalUsuario(id:string){
+    const reqHeader =  this.auth.headerToken();
+    return this.http.get(`${this.url}/sucursal/user/${id}`,{headers: reqHeader })
+  }
+
+  getSucursalUsuarioExiste(sucusu:SucUsuModel){
+    const authData = {
+      id_user : sucusu.id_user,
+      id_sucursal: sucusu.id_sucursal
+    };
+    const reqHeader =  this.auth.headerToken();
+    return this.http.post(
+      `${ this.url }/sucursal/userexiste`,
+      authData,{headers: reqHeader });
+  }
+
+  agregarSucursalUsuario(sucusu:SucUsuModel){
+    const authData = {
+      id_user : sucusu.id_user,
+      id_sucursal: sucusu.id_sucursal
+    };
+    const reqHeader =  this.auth.headerToken();
+    return this.http.post(
+      `${ this.url }/sucursal/user`,
+      authData,{headers: reqHeader });
+  }
+
+  borrarSucursalUsuario(sucusu:SucUsuModel){
+    const authData = {
+      id_user : sucusu.id_user,
+      id_sucursal: sucusu.id_sucursal
+    };
+    const reqHeader =  this.auth.headerToken();
+    return this.http.post(
+      `${ this.url }/sucursal/user/delete`,
+      authData,{headers: reqHeader });
+  }
+
 }

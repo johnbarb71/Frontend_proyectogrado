@@ -19,10 +19,12 @@ export class SidebarComponent implements OnInit {
   cliente : UsuarioModel;
   sucursal : SucursalModel;
   sucAct: string = '';
+  sucUsu: string = '';
   sucursalNum$: Observable<SucursalModel>;
 
   constructor(private auth:AuthService, public router: Router, public location: Location, private sucurs:SucursalService) {  
     this.cliente = auth.leerUsuario();
+    
     this.getSucursalActualID();
   }
 

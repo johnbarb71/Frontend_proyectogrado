@@ -57,7 +57,7 @@ export class AuthService {
         email : usuario.email,
         password : usuario.password
       };
-
+      console.log('%cauth.service.ts line:60 authData', 'color: #007acc;', authData);
       return this.http.post(
         `${ this.url }/register`,
         authData);
@@ -143,7 +143,6 @@ export class AuthService {
 
     leerUserLocSt(){
       if(localStorage.getItem('user')){
-        console.log('%cauth.service.ts line:65 object', 'color: #007acc;', localStorage.getItem('user')); 
         this.userData = localStorage.getItem('user');
       }else{
         this.userData = '';
@@ -178,11 +177,14 @@ export class AuthService {
       return this.usuario1 = JSON.parse((localStorage.getItem('user')));
     }
 
+    public leerUsuaTok(){
+      return JSON.parse((localStorage.getItem('user')));
+    }
+
     public leerSucu(){
       return JSON.parse((localStorage.getItem('suc')));
     }
     
- 
     guardarTokenSuc(sucursal:string){
       localStorage.setItem('suc',JSON.stringify(sucursal));
     }

@@ -101,4 +101,23 @@ export class ProductosService {
       }
     ))
   }
+
+  getInformesucursallinea(id_sucursal:string,linea:string){
+    const reqHeader =  this.auth.headerToken();
+    return this.http.get(`${this.url}/informes/linea/${id_sucursal}/${linea}`,{headers: reqHeader }).pipe(map(
+      data =>{
+        return data['producto'];
+      }
+    ))
+  }
+
+  putCerosCantidades(id_sucursal:string){
+    const reqHeader =  this.auth.headerToken();
+    return this.http.get(`${this.url}/productos/xb36pvbtt64qhy29ggt3/${id_sucursal}`,{headers: reqHeader }).pipe(map(
+      data =>{
+        return data['producto'];
+      }
+    ))
+  }
+
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RoleModel } from './models/role.model';
 /* Modulos app */
 import { LoginComponent } from './components/login/login.component';
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -12,6 +13,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { ActivarusuarioComponent } from "./components/usuarios/activarusuario/activarusuario.component";
 import { AgregarusuarioComponent } from "./components/usuarios/agregarusuario/agregarusuario.component";
 import { EditarusuarioComponent } from "./components/usuarios/editarusuario/editarusuario.component";
+import { SucusuariosComponent } from "./components/usuarios/sucusuarios/sucusuarios.component";
+import { SucusuarioComponent } from "./components/usuarios/sucusuario/sucusuario.component";
 import { UsuarioComponent } from "./components/usuarios/usuario/usuario.component";
 import { ActivarusuariosComponent } from "./components/usuarios/activarusuarios/activarusuarios.component";
 import { EditarusuariosComponent } from "./components/usuarios/editarusuarios/editarusuarios.component";
@@ -55,12 +58,14 @@ const routes: Routes = [
       { path: 'contacto', component: ContactoComponent, canActivate:[ AuthGuard] },
       { path: 'ayuda', component: AyudaComponent, canActivate:[ AuthGuard] },
       /* Usuario */
-      { path: 'usuario', component: UsuarioComponent, canActivate:[ AuthGuard] },
+      { path: 'usuario', component: UsuarioComponent, canActivate:[ AuthGuard]},
       { path: 'usuario/users/activar/:id', component: ActivarusuarioComponent, canActivate:[ AuthGuard] },
       { path: 'usuario/users/activar', component: ActivarusuariosComponent, canActivate:[ AuthGuard] },
       { path: 'usuario/users/editar/:id', component: EditarusuarioComponent, canActivate:[ AuthGuard] },
       { path: 'usuario/users/editar', component: EditarusuariosComponent, canActivate:[ AuthGuard] },
       { path: 'usuario/agregar', component: AgregarusuarioComponent, canActivate:[ AuthGuard] },
+      { path: 'usuario/sucursal', component: SucusuariosComponent, canActivate:[ AuthGuard] },
+      { path: 'usuario/sucursal/:id', component: SucusuarioComponent, canActivate:[ AuthGuard] },
       /* Proveedores */
       { path: 'proveedor', component: ProveedoresComponent, canActivate:[ AuthGuard] },
       { path: 'proveedor/editar', component: EditarproveedoresComponent, canActivate:[ AuthGuard] },
@@ -89,9 +94,9 @@ const routes: Routes = [
       /* Inventarios */
       { path: 'informes', component: InformeComponent, canActivate:[ AuthGuard] },
       { path: 'informes/informe', component: InformeSucursalComponent, canActivate:[ AuthGuard]},
-      { path: 'informes/informe/:sucursal', component: InformeSucursalComponent, canActivate:[ AuthGuard]},
+      /* { path: 'informes/informe/:sucursal', component: InformeSucursalComponent, canActivate:[ AuthGuard]}, */
       { path: 'informes/informe/linea', component: InformeSucursalLineaComponent, canActivate:[ AuthGuard]},
-      { path: 'informes/informe/linea/:sucursal/:linea', component: InformeSucursalLineaComponent, canActivate:[ AuthGuard]},
+      /* { path: 'informes/informe/linea/:sucursal/:linea', component: InformeSucursalLineaComponent, canActivate:[ AuthGuard]}, */
     ] },
   
   { path: '', pathMatch: 'full', redirectTo: 'home' },

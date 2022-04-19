@@ -1,0 +1,96 @@
+<h1>Editar campos del usuario</h1>
+<section class="content">
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Editar usuario</h3>
+        </div>
+        
+        
+        
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
+                    <div class="col-sm-10">
+                        <input type="text" 
+                                class="form-control"
+                                name="name"
+                                [(ngModel)]="usuario.name"
+                                placeholder="Nombre completo"
+                                readonly
+                        >
+                    </div>
+                </div>
+                <label class="mt-5">Listado de sucursales a los que pertenece el usuario:</label>
+                <div class="card-body">
+                    <table class="table table-bordered col-sm-10">
+                        <thead>
+                            <tr>
+                                <th>Sucursales que dispone el usuario</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor="let su of sucUsu">
+                            <td>{{su.id_sucursal}}</td>
+                            <ng-container *ngFor="let sucursal of sucursales">
+                                <td *ngIf="su.id_sucursal==sucursal.id">
+                                    {{sucursal.nombre}}
+                                </td>
+                            </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <label class="mt-5">Agregar sucursal a usuario:</label>
+
+                <form class="form-horizontal" (ngSubmit)="guardar(f)" #f="ngForm">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Sucursales</label>
+                        <div class="col-sm-3">
+                            <select class="custom-select" 
+                                    id="inputGroupSelect01"
+                                    name="id_sucursal"
+                                    [(ngModel)]="sucUsu1.id_sucursal"
+                                    >
+                                <option *ngFor="let sucursal of sucursales;" value="{{sucursal.id}}">{{sucursal.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Agregar</button>
+                </form>
+
+                <label class="mt-5">Eliminar sucursal a usuario:</label>
+
+                <form class="form-horizontal" (ngSubmit)="eliminar(f)" #f="ngForm">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Sucursales</label>
+                        <div class="col-sm-3">
+                            <select class="custom-select" 
+                                    id="inputGroupSelect01"
+                                    name="id_sucursal"
+                                    [(ngModel)]="sucUsu2.id_sucursal"
+                                    >
+                                <option *ngFor="let sucursal of sucursales;" value="{{sucursal.id}}">{{sucursal.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Eliminar</button>
+                </form>
+
+            </div>
+
+            
+            
+
+            
+            
+        
+        <div class="form-group row ml-4">
+            <button (click)='regresarPagina()' class="btn btn-default float-left">Cancelar</button>
+        </div>
+        
+    </div>
+
+        
+</section>
