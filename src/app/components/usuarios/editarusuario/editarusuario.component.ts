@@ -61,12 +61,9 @@ export class EditarusuarioComponent implements OnInit {
 
   guardar(form:NgForm){
     if (form.invalid) {
-      console.log('%cagregarusuario.component.ts line:25 object', 'formulario no valido');
       return;
     }
-    console.log('%ceditarusuario.component.ts line:63 form.value', 'color: #007acc;', form.value);
     if(form.pristine){
-      console.log('%ceditarusuario.component.ts line:65 object estado rtocado', 'color: #407acc;');
       if(form.value['estado']===1){
         this.usuario.estado = 1;
       }else{
@@ -97,8 +94,7 @@ export class EditarusuarioComponent implements OnInit {
         default:
           this.usuario.estado = 0;
       }
-      console.log('%ceditarusuario.component.ts line:85', 'color: white; background-color: #007acc;',form.value);
-      console.log('%ceditarusuario.component.ts line:86 this.usuario', 'color: white; background-color: #007acc;', this.usuario);
+      
       /* switch(form.value['rol']) {
         case '2':
           this.usuario.role = 2;
@@ -117,9 +113,6 @@ export class EditarusuarioComponent implements OnInit {
       } */
       this.usuario.role = Number(this.usuario.role);
     }
-    
-    
-    console.log('%ceditarusuario.component.ts line:78 this.usuario', 'color: #007acc;', this.usuario);
     this.auth.updUsuario(this.usuario).subscribe( resp => 
       {
         if(resp['message'] === 'Usuario actualizado correctamente'){

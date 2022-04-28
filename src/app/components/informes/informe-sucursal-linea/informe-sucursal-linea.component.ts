@@ -134,4 +134,9 @@ export class InformeSucursalLineaComponent implements OnInit {
     //Fin numero de páginas
     doc.save(`${new Date().toISOString().substring(0, 10)}_Inventario.pdf`)
   }
+
+  regresarPagina(){
+    return this.router.navigateByUrl('/home/informes');
+  }
+  
 }

@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 //Headers
 import { AuthService } from "../services/auth.service";
+import{ GlobalConstants } from '../common/global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ import { AuthService } from "../services/auth.service";
 export class SucursalService {
 
   //servidor BackEnd
-  url = 'http://localhost:8000/api/v1';
+  //url = 'http://localhost:8000/api/v1';
+  url = GlobalConstants.apiURL;
   //Observable sucursal para NAVBAR
   numSucursal: SucursalModel;
   numSucToken: string;

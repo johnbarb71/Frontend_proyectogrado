@@ -25,4 +25,9 @@ export class EditarproveedoresComponent implements OnInit {
     this.router.navigate(['/home/proveedor/editar',termino]);
   };
 
+  regresarPagina(){
+    return this.router.navigateByUrl('/home/proveedor');
+  }
+
+
 }

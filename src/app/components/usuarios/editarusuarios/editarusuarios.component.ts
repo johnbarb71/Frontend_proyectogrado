@@ -18,9 +18,7 @@ export class EditarusuariosComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.getUsuarios().subscribe((resp:any)=>{
-      console.log('%ceditarusuario.component.ts line:23 resp', 'color: #007acc;', resp);
       this.usuarios = resp;
-      console.log('%ceditarusuarios.component.ts line:22 this.usuarios', 'color: #007acc;', this.usuarios);
     })
   }
 
@@ -37,5 +35,9 @@ export class EditarusuariosComponent implements OnInit {
   buscarId(termino:string){
     this.router.navigate(['/home/usuario/users/editar',termino]);
   };
+
+  regresarPagina(){
+    return this.router.navigateByUrl('/home/usuario');
+  }
 
 }

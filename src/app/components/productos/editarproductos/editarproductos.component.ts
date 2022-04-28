@@ -85,4 +85,8 @@ export class EditarproductosComponent implements OnInit {
     })
   }
 
+  regresarPagina(){
+    return this.router.navigateByUrl('/home/productos');
+  }
+
 }

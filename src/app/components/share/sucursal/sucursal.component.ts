@@ -21,7 +21,8 @@ export class SucursalComponent implements OnInit {
   constructor(private sucur:SucursalService, private auth:AuthService, private router:Router) { }
 
   ngOnInit(): void {
-    this.sucur.getSucursales().subscribe((resp:any)=>{  
+    this.sucur.getSucursales().subscribe((resp:any)=>{
+      console.log('%csucursal.component.ts line:25 resp', 'color: #007acc;', resp);
       this.sucursales = resp;
       this.sucursalesdisp = this.auth.leerSucu();
       for (let sucursal of this.sucursalesdisp){

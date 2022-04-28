@@ -1,19 +1,47 @@
 <h1>Productos</h1>
 <section class="content">
-    <div class="content-header">
-        <h1>Menú principal de Productos</h1>
-    </div>
     <div class="content px-2">
-        <p>En esta sección encuentra todo lo relacionado con los productos.</p>
-        
-        <blockquote class="quote-info">
-            <h5 id="tip">Agregar producto</h5>
-            <p>Agregue productos a la Base de Datos, recuerde que es obligatorio el código de barras, nombre y proveedor.</p>
-        </blockquote>
-
-        <blockquote class="quote-info">
-            <h5 id="tip">Editar producto</h5>
-            <p>Si requiere cambiar o actualizar un producto lo puede hacer en esta sección, no puede dejar espacios vacíos.</p>
+        <blockquote class="quote-olive">
+            <h5 id="tip">Agregar, edite y consulte los productos</h5>
+            <!-- <p>Agregue usuarios de forma fácil, solo llene los datos básicos como nombre, contraseña, correo electrónico, tipo de rol y si es activo.</p> -->
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-light">
+                        <div class="inner">
+                            <h3><i class="fa fa-plus nav-icon"></i></h3>
+                            <p>Agregar</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-cubes"></i>
+                        </div>
+                        <a  routerLink="/home/productos/agregar" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-light">
+                        <div class="inner">
+                            <h3><i class="fa fa-cog nav-icon"></i></h3>
+                            <p>Editar</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-cubes"></i>
+                        </div>
+                        <a  routerLink="/home/productos/editar" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-light">
+                        <div class="inner">
+                            <h3><i class="fas fa-copy nav-icon"></i></h3>
+                            <p>Consultar</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-cubes"></i>
+                        </div>
+                        <a  routerLink="/home/productos/consultar" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+        </div>
         </blockquote>
 
         <blockquote class="quote-info">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { AuthService } from "src/app/services/auth.service";
@@ -13,7 +14,7 @@ export class SucusuariosComponent implements OnInit {
 
   usuarios:UsuarioModel [] = [];
 
-  constructor(private auth:AuthService, private router:Router) { }
+  constructor(private auth:AuthService, private router:Router, private location:Location) { }
 
   ngOnInit(): void {
     this.auth.getUsuarios().subscribe((resp:any)=>{
@@ -36,5 +37,9 @@ export class SucusuariosComponent implements OnInit {
   buscarId(termino:string){
     this.router.navigate(['/home/usuario/sucursal',termino]);
   };
+
+  regresarPagina(){
+    this.location.back();
+  }
 
 }

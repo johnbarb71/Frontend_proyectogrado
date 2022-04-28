@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 import { SucursalModel } from 'src/app/models/sucursal.model';
 import { SucursalService } from 'src/app/services/sucursal.service';
 
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -23,6 +24,7 @@ export class SidebarComponent implements OnInit {
   sucursalNum$: Observable<SucursalModel>;
 
   constructor(private auth:AuthService, public router: Router, public location: Location, private sucurs:SucursalService) {  
+    
     this.cliente = auth.leerUsuario();
     
     this.getSucursalActualID();

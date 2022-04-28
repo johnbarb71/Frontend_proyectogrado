@@ -25,4 +25,8 @@ export class EditarsucursalesComponent implements OnInit {
     this.router.navigate(['/home/sucursales/editar',termino]);
   };
 
+  regresarPagina(){
+    return this.router.navigateByUrl('/home/sucursales');
+  }
+
 }

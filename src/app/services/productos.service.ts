@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 //Headers
 import { AuthService } from "../services/auth.service";
+import{ GlobalConstants } from '../common/global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ import { AuthService } from "../services/auth.service";
 export class ProductosService {
 
   //servidor BackEnd
-  url = 'http://localhost:8000/api/v1';
+  //url = 'http://localhost:8000/api/v1';
+  url = GlobalConstants.apiURL;
 
   constructor(private http : HttpClient, private auth:AuthService ) { }
 

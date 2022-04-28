@@ -56,10 +56,8 @@ export class ActivarusuarioComponent implements OnInit {
 
    guardar(form:NgForm){
     if (form.invalid) {
-      console.log('%cagregarusuario.component.ts line:25 object', 'formulario no valido');
       return;
     }
-    console.log('%ceditarusuario.component.ts line:63 form.value', 'color: #007acc;', form.value);
     
     this.auth.updPassUsuario(this.usuario).subscribe( resp => 
       {

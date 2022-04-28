@@ -35,6 +35,14 @@ export class AgregarinventarioComponent implements OnInit {
   guardar(form:NgForm){
     const cod1 = this.producto.codigo1;
     const suc1 = this.producto.id_sucursal.toString();
+    if (form.invalid) {
+      Swal.fire({
+        allowOutsideClick: false,
+        title: '¡Error de digitación!',
+        text: 'No se permite números negativos',
+      })
+      return;
+    }
     if(!this.cantidadgondola){
       this.cantidadgondola = 0;
       this.producto.gondola = Number(this.producto.gondola) + this.cantidadgondola;
@@ -128,7 +136,8 @@ export class AgregarinventarioComponent implements OnInit {
   } */
 
 
-  buscarCodigo(codigo1:string,sucurs:string){
+  buscarCodigo(codigo1:string){
+    const sucurs = this.suc;
     this.getProducto(codigo1,sucurs);    
   }
 

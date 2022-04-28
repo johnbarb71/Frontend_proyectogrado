@@ -133,4 +133,8 @@ export class InformeSucursalComponent implements OnInit {
     })
   }
 
+  regresarPagina(){
+    return this.router.navigateByUrl('/home/informes');
+  }
+
 }

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 //finde Observable
 import { map } from 'rxjs/operators';
 import { SucursalModel } from '../models/sucursal.model';
+import{ GlobalConstants } from '../common/global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ import { SucursalModel } from '../models/sucursal.model';
 export class AuthService {
 
   //servidor BackEnd
-  url = 'http://localhost:8000/api/v1';
+  //url = 'http://localhost:8000/api/v1';
+  url = GlobalConstants.apiURL;
 
   userToken: any = null;
   userData: any = null;

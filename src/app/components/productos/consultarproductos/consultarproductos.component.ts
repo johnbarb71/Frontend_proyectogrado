@@ -42,22 +42,35 @@ export class ConsultarproductosComponent implements OnInit {
           icon: 'error',
           allowOutsideClick: false,
           title: 'Producto no encontrado.',
-          text: 'Intente buscar con otro proveedor.',
+          text: 'El código de barras no existe.',
         })
       }
     })
   }
 
   buscarCodigo(codigo1:string){
-    console.log('%ceditarproductos.component.ts line:65 codigo1', 'color: #007acc;', codigo1);
     this.produc.getProductoCodigo(codigo1).subscribe((resp:any)=>{
       this.productos = resp;
+    },(err) => {
+      /* console.log('%ceditarusuario.component.ts line:43 err.status', 'color: #007acc;', err.status); */
+      if(err.status === 404){
+        Swal.fire({
+          icon: 'error',
+          allowOutsideClick: false,
+          title: 'Producto no encontrado.',
+          text: 'Intente buscar con otro proveedor.',
+        })
+      }
     })
   }
 
 
   buscarId(id:string){
     this.router.navigate(['/home/productos/consultar',id]);
+  }
+
+  regresarPagina(){
+    return this.router.navigateByUrl('/home/productos');
   }
 
 }
