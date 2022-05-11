@@ -2,9 +2,9 @@
 
 Proyecto de grado en basado en Angular.
 
-## Autores
+## Autor
 
-Jhon Henry Barbosa González y Jonathan Alexander Figueroa Jaimes.
+Jhon Henry Barbosa González.
 
 ## Universidad de Investigación y Desarrollo - UDI
 
